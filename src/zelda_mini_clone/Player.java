@@ -19,23 +19,27 @@ public class Player extends Rectangle {
 	
 	public void tick() {
 //		Movimentação do personagem
-		if(right) {
+		if(right && World.isFree(x+spd, y)) {
 			x += spd;
-		} else if(left) {
+		} else if(left && World.isFree(x-spd, y)) {
 			x -= spd;
 		}
 		
-		if(up) {
+		if(up && World.isFree(x, y-spd)) {
 			y -= spd;
-		} else if(down) {
+		} else if(down && World.isFree(x, y+spd)) {
 			y += spd;
 		}
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect(x, y, width, height);
-//		Essas são as propriedades que já estão na classe Rectangle.
+		g.drawImage(Spritesheet.player_front, x, y, 32, 32, null);
+//		Renderiza a imagem, passando a posição e o tamanho.
+		
+//		g.setColor(Color.blue);
+		
+//		g.fillRect(x, y, width, height);
+//		Essas são as propriedades que já estão na classe Rectangle, o: x, y, width e height.
 	}
 	
 }

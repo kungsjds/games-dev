@@ -15,14 +15,18 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public static int WIDTH = 480, HEIGHT = 480;
 	public Player player;
 	
+	public World world;
+	
 	public Game() {
 //		Adiciona eventos de teclado. Os eventos foram criados no final do código, com o implements do KeyListener.
 		this.addKeyListener(this);
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 //		Tamanho da janela
+		new Spritesheet();
 		
-//		Criando o player passando a posição
-		player = new Player(0, 0);
+//		Cria o player passando a posição
+		player = new Player(32, 32);
+		world  = new World();
 	}
 	
 	public void tick() {
@@ -42,11 +46,14 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.black);
+//		Cor verde
+		g.setColor(new Color(0, 135, 13));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 //		Cria retângulos na tela.
 		
 		player.render(g);		
+		
+		world.render(g);
 		
 		bs.show();
 	}
