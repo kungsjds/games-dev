@@ -3,6 +3,7 @@ package zelda_mini_clone;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -12,7 +13,8 @@ import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable, KeyListener {
 
-	public static int WIDTH = 480, HEIGHT = 480;
+	public static int WIDTH = 640, HEIGHT = 480;
+	public static int SCALE = 3;
 	public Player player;
 	
 	public World world;
@@ -48,7 +50,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		
 //		Cor verde
 		g.setColor(new Color(0, 135, 13));
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
 //		Cria retângulos na tela.
 		
 		player.render(g);		
@@ -119,6 +121,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			player.up = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			player.down = true;
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_Z) {
+			player.shoot = true;
 		}
 		
 	}

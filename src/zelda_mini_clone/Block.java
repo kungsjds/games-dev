@@ -11,7 +11,7 @@ public class Block extends Rectangle {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(Spritesheet.fireWall, x, y, 32, 32, null);
+		g.drawImage(Spritesheet.flameWall, x, y, 32, 32, null);
 //		Renderiza a imagem passando a posição e o tamanho.
 		
 //		g.setColor(Color.MAGENTA);

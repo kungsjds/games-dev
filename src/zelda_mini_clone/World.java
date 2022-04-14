@@ -11,18 +11,18 @@ public class World {
 	
 	public World() {
 //		Incluindo o bloco ao redor da janela do jogo.
-		for(int xx = 0; xx < 15; xx++) {
+		for(int xx = 0; xx < 20; xx++) {
 			bloco.add(new Block(xx*32, 0));
 		}		
-		for(int xx = 0; xx < 15; xx++) {
+		for(int xx = 0; xx < 20; xx++) {
 			bloco.add(new Block(xx*32, 480-32));
 		}
 		
-		for(int yy = 0; yy < 15; yy++) {
+		for(int yy = 0; yy < 20; yy++) {
 			bloco.add(new Block(0, yy*32));
 		}
-		for(int yy = 0; yy < 15; yy++) {
-			bloco.add(new Block(480-32, yy*32));
+		for(int yy = 0; yy < 20; yy++) {
+			bloco.add(new Block(640-32, yy*32));
 		}
 	
 	}
