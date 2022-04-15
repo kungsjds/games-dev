@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -15,9 +16,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 	public static int WIDTH = 640, HEIGHT = 480;
 	public static int SCALE = 3;
-	public Player player;
-	
 	public World world;
+	public Player player;		
+	public List<Inimigo> inimigos = new ArrayList<Inimigo>();
 	
 	public Game() {
 //		Adiciona eventos de teclado. Os eventos foram criados no final do código, com o implements do KeyListener.
@@ -26,14 +27,23 @@ public class Game extends Canvas implements Runnable, KeyListener {
 //		Tamanho da janela
 		new Spritesheet();
 		
-//		Cria o player passando a posição
-		player = new Player(32, 32);
 		world  = new World();
+		
+//		Cria o player passando a posição
+		player = new Player(32, 32);		
+		
+		inimigos.add(new Inimigo(32, 32));
+		
+		inimigos.add(new Inimigo(32, 64));
 	}
 	
 	public void tick() {
 //		Aqui ficará tudo sobre a lógica do jogo, colisões, movimentação, etc
 		player.tick();
+		
+		for(int i = 0; i < inimigos.size(); i++) {
+			inimigos.get(i).tick();
+		}
 	}
 	
 	public void render() {
@@ -54,6 +64,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 //		Cria retângulos na tela.
 		
 		player.render(g);		
+		
+		for(int i = 0; i < inimigos.size(); i++) {
+			inimigos.get(i).render(g);
+		}
 		
 		world.render(g);
 		

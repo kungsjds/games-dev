@@ -14,6 +14,8 @@ public class Spritesheet {
 	public static BufferedImage[] player_left;
 	public static BufferedImage[] player_right;
 	
+	public static BufferedImage[] inimigo_front;
+	
 	public static BufferedImage bullets;
 	
 	public static BufferedImage flameWall;
@@ -30,6 +32,11 @@ public class Spritesheet {
 		player_back  = new BufferedImage[2];
 		player_left  = new BufferedImage[2];
 		player_right = new BufferedImage[2];
+		
+		inimigo_front= new BufferedImage[2];
+		
+		inimigo_front[0] = Spritesheet.getSprite(223, 241, 16, 16);
+		inimigo_front[1] = Spritesheet.getSprite(243, 240, 16, 16);
 				
 		player_front[0] = Spritesheet.getSprite(0, 11, 16, 16);
 		player_front[1] = Spritesheet.getSprite(16, 11, 16, 16);
